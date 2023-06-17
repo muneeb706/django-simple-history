@@ -1,0 +1,16 @@
+### Introduction ###
+
+This document contains information about how each feature of django-simple-history is implemented at abstract level.
+Features are taken from https://django-simple-history.readthedocs.io/.
+
+### Features and how they are implemented
+
+Track History (v3.3.0)
+
+1. history attribute is defined in the model (for which we want to track history) with HistoricalRecords instance.
+2. In HistoricalRecords class (simple_history.models.HistoricalRecords) contribute_to_class method is defined.
+3. contribute_to_class method is invoked by django.db.models.base.ModelBase class (metaclass of django.db.models.Model).
+4. contribute_to_class method received the model name (for which we want to track history) and name of the attribute being assigned with HistoricalRecords instance.
+5. In contribute_to_class method finalize method is connected with class_prepared signal (django.db.models.signals.class_prepared) which is sent whenever a model class is being prepared.
+6. finalize method is defined in the HistoricalRecords class.
+7. In finalize method history model definition is created, and post save, post delete methods are connected to corresponding signals.

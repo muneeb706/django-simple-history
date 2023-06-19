@@ -12,5 +12,16 @@ Track History (v3.3.0)
 3. contribute_to_class method is invoked by django.db.models.base.ModelBase class (metaclass of django.db.models.Model).
 4. contribute_to_class method received the model name (for which we want to track history) and name of the attribute being assigned with HistoricalRecords instance.
 5. In contribute_to_class method finalize method is connected with class_prepared signal (django.db.models.signals.class_prepared) which is sent whenever a model class is being prepared.
-6. finalize method is defined in the HistoricalRecords class.
-7. In finalize method history model definition is created, and post save, post delete methods are connected to corresponding signals.
+6. Then extra methods specific to tracked model are added to given model.
+7. finalize method is defined in the HistoricalRecords class.
+8. In finalize method history model definition is created, and post save, post delete methods are connected to corresponding signals.
+
+---
+
+Track History for a Third-Party Model (v3.3.0)
+
+1. Third party models can be tracked using register function (simple_history.register).
+2. In this function, HistoricalRecords attribute is created.
+3. Then, given model is assigned to cls property of HistoricalRecords attribute.
+4. Then, given model is assigned extra methods specific to tracked model.
+5. In the end finalize method of HistoricalRecords attribute is invoked with given model as argument.

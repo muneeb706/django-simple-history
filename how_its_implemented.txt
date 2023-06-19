@@ -25,3 +25,13 @@ Track History for a Third-Party Model (v3.3.0)
 3. Then, given model is assigned to cls property of HistoricalRecords attribute.
 4. Then, given model is assigned extra methods specific to tracked model.
 5. In the end finalize method of HistoricalRecords attribute is invoked with given model as argument.
+
+---
+
+Populate History Command (v3.3.0)
+Used for generating initial change for pre-existing model instances.
+
+1. Handler of the command is defined in simple_history\management\commands\populate_history.py.
+2. First, it fetches the list of history models based on given argument.
+3. Then, for each model it gets the instances (records).
+4. Then, it saves this record (in batch) in the corresponding history table with create ("+") history type.

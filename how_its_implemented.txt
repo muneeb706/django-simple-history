@@ -38,9 +38,11 @@ Used for generating initial change for pre-existing model instances.
 
 ---
 
-Querying history on a model instance (v3.3.0)
+Querying history on a model instance and Querying history on a model class (v3.3.0)
 
 1. In the finalize method, a HistoryDescriptor (simple_history.manager.HistoryDescriptor) is created with history model.
 2. In HistoryDescriptor a HistoricalQuerySet(simple_history.manager.HistoricalQuerySet) is returned which is a child class of (django.db.models.QuerySet).
 3. Then the descriptor is set as an value of history attribute (which is a manager_name in context of HistoricalRecords class).
 4. So, whenever you access model.history, you get HistoricalQuerySet in return, in this way you indirectly interact with the history model.
+
+---

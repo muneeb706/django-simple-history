@@ -46,3 +46,7 @@ Querying history on a model instance and Querying history on a model class (v3.3
 4. So, whenever you access model.history, you get HistoricalQuerySet in return, in this way you indirectly interact with the history model.
 
 ---
+
+Getting previous and next historical record (v3.3.0)
+
+1. In the create_history_model method, that is invoke inside

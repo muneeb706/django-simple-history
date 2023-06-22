@@ -49,4 +49,6 @@ Querying history on a model instance and Querying history on a model class (v3.3
 
 Getting previous and next historical record (v3.3.0)
 
-1. In the create_history_model method, that is invoke inside
+1. In the create_history_model method, that is invoke inside the finalize method, extra fields are added to the history model.
+2. prev_record and next_record are the attributes set as an extra fields of history model.
+3. Their values are fetched from their corresponding getters methods.
